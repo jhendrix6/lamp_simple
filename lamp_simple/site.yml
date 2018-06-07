@@ -8,19 +8,21 @@
 
   roles:
     - common
+    
+  tasks:
 
-- name: configure and deploy the webservers and application code
-  hosts: webservers
-  remote_user: root
-  delegate_to: 127.0.0.1
+    - name: configure and deploy the webservers and application code
+      hosts: webservers
+      remote_user: root
+      delegate_to: 127.0.0.1
   
-  roles:
-    - web
+      roles:
+        - web
 
-- name: deploy MySQL and configure the databases
-  hosts: dbservers
-  remote_user: root
-  delegate_to: 127.0.0.1
+    - name: deploy MySQL and configure the databases
+      hosts: dbservers
+      remote_user: root
+      delegate_to: 127.0.0.1
 
-  roles:
-    - db
+      roles:
+        - db
