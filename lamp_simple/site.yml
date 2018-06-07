@@ -4,7 +4,7 @@
 - name: apply common configuration to all nodes
   hosts: all
   remote_user: root
-  local_action: true
+  
 
   roles:
     - common
@@ -12,13 +12,15 @@
 - name: configure and deploy the webservers and application code
   hosts: webservers
   remote_user: root
-
+  delegate_to: 127.0.0.1
+  
   roles:
     - web
 
 - name: deploy MySQL and configure the databases
   hosts: dbservers
   remote_user: root
+  delegate_to: 127.0.0.1
 
   roles:
     - db
